@@ -15,17 +15,7 @@
     margin-left: 20px;
 }
 
-.posts {
-    margin: 50px 0 0 10px;
-}
 
-.post__wrapper {
-    margin-top: 50px;
-}
-
-.post {
-    margin-bottom: 10px;
-}
 
 .content {
     grid-area: content;

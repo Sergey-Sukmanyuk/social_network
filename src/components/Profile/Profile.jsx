@@ -1,7 +1,8 @@
 import React from 'react';
-import wallpaper from "../images/wallpaper.png";
-import main_avatar from "../images/joker.jpg";
+import wallpaper from "../../images/wallpaper.png";
+import main_avatar from "../../images/joker.jpg";
 import style from './Profile.module.css'
+import MyPosts from "./MyPosts/MyPosts";
 
 
 const Profile = () => {
@@ -23,20 +24,8 @@ const Profile = () => {
                     <div className={style.info_item}>Website: none</div>
                 </div>
             </div>
-
-            <div className={style.posts}>
-                <h2>My Posts</h2>
-                <div>
-                    <input type="text"/>
-                    <button>Add Post</button>
-                </div>
-
-                <div className={style.post__wrapper}>
-                    <div className={style.post}>First post</div>
-                    <div className={style.post}>Second post</div>
-                </div>
-
-            </div>
+        <MyPosts/>
+        
         </section>
     )
 }

@@ -1,0 +1,11 @@
+.logo {
+    width: 70px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+
+.header {
+    grid-area: header;
+    background-color: #3B5999;
+}

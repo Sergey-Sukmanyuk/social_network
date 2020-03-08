@@ -1,0 +1,9 @@
+.sidebar {
+    grid-area: sidebar;
+    background-color: #fff;
+    margin-right: 2px;
+}
+
+.sidebar ul {
+    margin:30px 0 0 30px;
+}

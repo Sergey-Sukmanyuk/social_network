@@ -7,3 +7,7 @@
 .sidebar ul {
     margin:30px 0 0 30px;
 }
+
+a.active {
+    color: grey;
+}

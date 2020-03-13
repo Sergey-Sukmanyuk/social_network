@@ -11,13 +11,13 @@ const Post = (props) => {
                         <img src={avaMale} alt="avatar"/>
                     </div>
                     <div className={style.post}>
-                        {props.message}
+                        {props.post}
                     </div>
                 </div>
 
                 <div className={style.likeCounter}>
                     <img src={like} alt="like"/>
-                    <div className={style.counter}>{props.likeValue}</div>
+                    <div className={style.counter}>{props.likesCount}</div>
                 </div>
                 <hr/>
 

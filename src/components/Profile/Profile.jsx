@@ -5,7 +5,7 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <section className={style.content}>
             <div className={style.wallpaper}>
@@ -13,7 +13,7 @@ const Profile = () => {
             </div>
 
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts posts = {props.posts}/>
 
         </section>
     )

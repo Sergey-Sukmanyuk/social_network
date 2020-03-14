@@ -14,3 +14,7 @@
 .active {
     color: grey;
 }
+
+.messageInput {
+    margin-top: 50px;
+}

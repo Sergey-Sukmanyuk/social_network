@@ -6,17 +6,23 @@ import Post from "./Post/Post";
 const MyPosts = (props) => {
 
 
-    const postElements = props.posts.map(data => <Post post={data.post} likesCount={data.likesCount}/>)
+    const postElements = props.posts.map(data => <Post key = {data.id} post={data.post} likesCount={data.likesCount}/>)
+    let inputPost = React.createRef()
 
+    let addPost = () => {
+        let text = inputPost.current.value
+        props.addPost(text)
+        inputPost.current.value = ''
+    }
     return (
         <div className={style.posts}>
             <h2>My Posts</h2>
             <div>
                 <div>
-                    <input type="text"/>
+                    <input ref={inputPost} type="text"/>
                 </div>
                 <div className={style.btn}>
-                    <button>Add Post</button>
+                    <button onClick={addPost}>Add Post</button>
                 </div>
             </div>
             {postElements}

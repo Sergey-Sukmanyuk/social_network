@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './../Dialogs.module.css'
-import InputMessage from "./Input/InputMessage";
+
 
 
 const Messages = (props) => {

@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_POST = 'UPDATE-POST'
+const ADD_MESSAGE = 'ADD-MESSAGE'
+const UPDATE_MESSAGE = 'UPDATE-MESSAGE'
+
 let store = {
     _state: {
         profilePage: {
@@ -26,13 +31,17 @@ let store = {
         }
     },
 
-    getState(){
-        return this._state
-    },
-
     _callsubscriber () {
         console.log('State was changed')
     },
+
+    getState(){
+        return this._state
+    },
+    subscriber (observer){
+        this._callsubscriber = observer
+    },
+
 
     addPost() {
         let post = {
@@ -65,13 +74,45 @@ let store = {
         this._callsubscriber(this._state)
     },
 
-    subscriber (observer){
-        this._callsubscriber = observer
+    dispatch(action) {
+        switch (action.type) {
+            case ADD_POST:
+                let post = {
+                    id: '3',
+                    post: this._state.profilePage.newPostText,
+                    likesCount: '0'
+                }
+                this._state.profilePage.posts.unshift(post)
+                this._state.profilePage.newPostText = ''
+                this._callsubscriber(this._state);
+                break;
+            case UPDATE_POST:
+                this._state.profilePage.newPostText = action.updateText
+                this._callsubscriber(this._state);
+                break;
+            case ADD_MESSAGE:
+                let message = {
+                    id: '5',
+                    message: this._state.dialogsPage.newMessageText
+                }
+                this._state.dialogsPage.messages.unshift(message)
+                this._state.dialogsPage.newMessageText = ''
+                this._callsubscriber(this._state);
+                break;
+            case UPDATE_MESSAGE:
+                this._state.dialogsPage.newMessageText = action.updateText
+                this._callsubscriber(this._state);
+                break;
+        }
     }
+
 }
 
 
-
+export const addPostAC = () => ({type: ADD_POST})
+export const updatePostAC = (text) => ({type: UPDATE_POST, updateText: text})
+export const addMessageAC = () => ({type: ADD_MESSAGE})
+export const updateMessageAC = (textMessage) => ({type: UPDATE_MESSAGE, updateText: textMessage})
 
 
 export default store;

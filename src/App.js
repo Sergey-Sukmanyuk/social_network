@@ -12,6 +12,7 @@ import News from "./components/News/News";
 
 
 function App(props) {
+    debugger
     return (
 
             <div className="App">

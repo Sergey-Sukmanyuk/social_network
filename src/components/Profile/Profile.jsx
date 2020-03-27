@@ -1,11 +1,13 @@
 import React from 'react';
 import wallpaper from "../../images/wallpaper.png";
 import style from './Profile.module.css'
-import MyPosts from "./MyPosts/MyPosts";
+
 import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./MyPosts/ProfileInfo/MyPostsContainer";
 
 
 const Profile = (props) => {
+
     return (
         <section className={style.content}>
             <div className={style.wallpaper}>
@@ -13,7 +15,7 @@ const Profile = (props) => {
             </div>
 
             <ProfileInfo/>
-            <MyPosts profilePage = {props.profilePage} dispatch ={props.dispatch}/>
+            <MyPostsContainer store = {props.store}/>
 
 
         </section>

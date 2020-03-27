@@ -2,17 +2,17 @@ import React from 'react'
 import style from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
 import Messages from "./Messages/Messages";
-import MessageForm from "./Messages/MessageForm/MessageForm";
+import MessageFormContainer from "./Messages/MessageForm/MessageFormContainer";
 
 
 
 
 const Dialogs = (props) => {
 
+let dialogsPage = props.store.getState().dialogsPage
 
-
-    const  userElements = props.dialogsPage.users.map(user => <DialogsItem key = {user.id} name = {user.name} id = {user.id}/>)
-    const messageElements = props.dialogsPage.messages.map(text => <Messages key = {text.id} message = {text.message}/>)
+    const  userElements = dialogsPage.users.map(user => <DialogsItem key = {user.id} name = {user.name} id = {user.id}/>)
+    const messageElements = dialogsPage.messages.map(text => <Messages key = {text.id} message = {text.message}/>)
 
     return (
         <div className={style.dialogs}>
@@ -22,7 +22,7 @@ const Dialogs = (props) => {
             <div className={style.messages}>
                 {messageElements}
                 <div className={style.messageInput}>
-                    <MessageForm dispatch ={props.dispatch} newMessageText = {props.dialogsPage.newMessageText}/>
+                    <MessageFormContainer store = {props.store} newMessageText = {dialogsPage.newMessageText}/>
                 </div>
             </div>
 

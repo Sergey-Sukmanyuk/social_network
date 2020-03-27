@@ -12,7 +12,7 @@ import News from "./components/News/News";
 
 
 function App(props) {
-    debugger
+
     return (
 
             <div className="App">
@@ -20,8 +20,8 @@ function App(props) {
                     <Header/>
                     <Navbar/>
                     <div className="wrapper_content">
-                        <Route path = "/profile"> <Profile profilePage = {props.state.profilePage} dispatch ={props.dispatch} /> </Route>
-                        <Route path = "/dialogs"> <Dialogs dialogsPage = {props.state.dialogsPage} dispatch ={props.dispatch}/> </Route>
+                        <Route path = "/profile"> <Profile store = {props.store} /> </Route>
+                        <Route path = "/dialogs"> <Dialogs store = {props.store}/> </Route>
                         <Route path = "/news" component={News}/>
                         <Route path = "/music" component={Music}/>
                         <Route path = "/settings" component={Settings}/>

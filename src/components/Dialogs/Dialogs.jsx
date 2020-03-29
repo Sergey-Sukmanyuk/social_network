@@ -2,17 +2,28 @@ import React from 'react'
 import style from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
 import Messages from "./Messages/Messages";
-import MessageFormContainer from "./Messages/MessageForm/MessageFormContainer";
+
 
 
 
 
 const Dialogs = (props) => {
 
-let dialogsPage = props.store.getState().dialogsPage
+    let sendMessage = () => {
+        props.addMessage()
 
-    const  userElements = dialogsPage.users.map(user => <DialogsItem key = {user.id} name = {user.name} id = {user.id}/>)
-    const messageElements = dialogsPage.messages.map(text => <Messages key = {text.id} message = {text.message}/>)
+    }
+
+    let onMessageChange = (event) => {
+        let textMessage = event.target.value
+        props.updateMessage(textMessage)
+
+    }
+
+
+
+    const  userElements = props.users.map(user => <DialogsItem key = {user.id} name = {user.name} id = {user.id}/>)
+    const messageElements = props.messages.map(text => <Messages key = {text.id} message = {text.message}/>)
 
     return (
         <div className={style.dialogs}>
@@ -22,7 +33,14 @@ let dialogsPage = props.store.getState().dialogsPage
             <div className={style.messages}>
                 {messageElements}
                 <div className={style.messageInput}>
-                    <MessageFormContainer store = {props.store} newMessageText = {dialogsPage.newMessageText}/>
+                    <div>
+                        <div>
+                            <textarea onChange = {onMessageChange}  value = {props.newMessageText} placeholder="Enter your message"/>
+                        </div>
+                        <div >
+                            <button onClick={sendMessage}>Send</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 

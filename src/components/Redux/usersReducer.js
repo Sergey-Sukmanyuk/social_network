@@ -3,14 +3,7 @@ const UNFOLLOW = 'UNFOLLOW'
 const USERS  = 'USERS'
 
 let initialState = {
-        users: [
-            {id: '1', followed: true, fullName: 'Dima', status: 'Life is good', location:{ country: 'Belarus', city: 'Minsk'}},
-            {id: '2', followed: false, fullName: 'Victor', status: 'Life is good', location:{ country: 'Russia', city: 'Moscow'}},
-            {id: '3', followed: false, fullName: 'Sergey', status: 'Life is good', location:{ country: 'Ukraine', city: 'Kiev'}},
-
-        ],
-        newPostText: ''
-
+        users: []
 }
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {

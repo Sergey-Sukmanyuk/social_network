@@ -1,14 +1,14 @@
 import React from 'react'
 import avatar from'../../images/avaMale.png'
 import style from './Users.module.css'
+import * as axios from 'axios'
 
 const Users = (props) => {
+    debugger
     if (props.users.length === 0){
-        props.setUsers(
-            [{id: '1', followed: true, fullName: 'Dima', status: 'Life is good', location:{ country: 'Belarus', city: 'Minsk'}},
-                {id: '2', followed: false, fullName: 'Victor', status: 'Life is good', location:{ country: 'Russia', city: 'Moscow'}},
-                {id: '3', followed: false, fullName: 'Sergey', status: 'Life is good', location:{ country: 'Ukraine', city: 'Kiev'}}]
-        )
+axios.get(' https://social-network.samuraijs.com/api/1.0/users').then(response => {
+    props.setUsers(response.data.items)
+})
     }
 
 
@@ -16,7 +16,10 @@ const Users = (props) => {
         <div className={style.wrapper}>
             {props.users.map(user => <div key = {user.id}>
                 <div>
-                    <div><img className={style.avatar} src={avatar} alt="avatar"/></div>
+                    <div>
+
+                       <img className={style.avatar} src={user.photos.small != null ? user.photos.small : avatar} alt="avatar"/>
+                    </div>
                     <div>
                         {user.followed
                             ? <button onClick={() => props.unfollow(user.id) }> Unfollow </button>
@@ -24,11 +27,11 @@ const Users = (props) => {
                     </div>
                 </div>
                 <div>
-                    <div>{user.fullName}</div>
+                    <div>{user.name}</div>
                     <div>{user.status}</div>
                 </div>
-                <div>{user.location.country}</div>
-                <div>{user.location.city}</div>
+                <div>{"user.location.country"}</div>
+                <div>{"user.location.city"}</div>
 
                 </div>
             )}

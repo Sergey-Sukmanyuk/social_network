@@ -1,10 +1,17 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
-const USERS  = 'USERS'
+const USERS = 'USERS'
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
+const SET_USERS_COUNT = 'SET-USERS-COUNT'
+
 
 let initialState = {
-        users: []
+    users: [],
+    currentPage: 1,
+    pageSize: 10,
+    totalUsersCount: 0
 }
+
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
@@ -14,7 +21,8 @@ const usersReducer = (state = initialState, action) => {
                     if (user.id === action.userId) {
                         return {...user, followed: true}
                     }
-                    return user})
+                    return user
+                })
             }
         case UNFOLLOW:
             return {
@@ -23,13 +31,25 @@ const usersReducer = (state = initialState, action) => {
                     if (user.id === action.userId) {
                         return {...user, followed: false}
                     }
-                    return user})
+                    return user
+                })
             }
         case USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: action.users
             }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+        case SET_USERS_COUNT:
+            return {
+                ...state,
+                totalUsersCount: action.totalUsersCount
+            }
+
 
         default:
             return state;
@@ -39,5 +59,8 @@ const usersReducer = (state = initialState, action) => {
 export const followAC = (userId) => ({type: FOLLOW, userId})
 export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
 export const setUsersAC = (users) => ({type: USERS, users})
+export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setUsersCountAC = (totalUsersCount) => ({type: SET_USERS_COUNT, totalUsersCount})
+
 
 export default usersReducer;

@@ -6,3 +6,15 @@
 .wrapper {
     margin: 10px;
 }
+
+.pagination {
+    margin: 10px;
+}
+.pagination span {
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.selectedPage {
+    font-weight: bold;
+}

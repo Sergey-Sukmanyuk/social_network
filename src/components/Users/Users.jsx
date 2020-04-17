@@ -15,7 +15,6 @@ const Users = (props) => {
             {props.users.map(user => <div key={user.id}>
                     <div>
                         <div>
-
                             <img className={style.avatar} src={user.photos.small != null ? user.photos.small : avatar}
                                  alt="avatar"/>
                         </div>

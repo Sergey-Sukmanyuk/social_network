@@ -3,7 +3,7 @@ import wallpaper from "../../images/wallpaper.png";
 import style from './Profile.module.css'
 
 import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./MyPosts/ProfileInfo/MyPostsContainer";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 const Profile = (props) => {

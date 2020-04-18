@@ -1,12 +1,17 @@
 import style from "../../Profile.module.css";
 import main_avatar from "../../../../images/joker.jpg";
 import React from "react";
+import Preloader from "../../../common/Preloader/Preloader";
 
-const ProfileInfo = () => {
-    return(
+const ProfileInfo = ({profile}) => {
+    if (!profile) {
+        return <Preloader/>
+    }
+debugger
+    return (
         <div className={style.description}>
             <div className={style.avatar}>
-                <img src={main_avatar} alt="avatar"/>
+                <img src={profile.photos.large} alt="avatar"/>
             </div>
             <div className={style.info}>
                 <h3>Artur Flack</h3>

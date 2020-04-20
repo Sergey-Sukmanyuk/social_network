@@ -15,5 +15,24 @@
     margin-left: 20px;
 }
 
+.social {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.socialImg {
+    position: absolute;
+    left:0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+}
+.socialImgS {
+    width: 27px;
+}
+
+.socialUrl {
+    margin-left: 30px;
+}
 
 

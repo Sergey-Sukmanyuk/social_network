@@ -8,4 +8,17 @@
 .header {
     grid-area: header;
     background-color: #3B5999;
+    position: relative;
+}
+
+.loginBlock{
+    color: white;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.loginBlock a {
+    color: #fff;
 }

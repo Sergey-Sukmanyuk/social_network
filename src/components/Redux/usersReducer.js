@@ -1,9 +1,12 @@
+import {usersAPI} from "../API/Api";
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const USERS = 'USERS'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
 const SET_USERS_COUNT = 'SET-USERS-COUNT'
 const SET_PRELOADER = 'SET-PRELOADER'
+const SET_DISABLE = 'SET-DISABLE'
 
 
 let initialState = {
@@ -11,7 +14,8 @@ let initialState = {
     currentPage: 1,
     pageSize: 10,
     totalUsersCount: 0,
-    isFetching: false
+    isFetching: false,
+    isDisabled: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -57,6 +61,13 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case SET_DISABLE:
+            return {
+                ...state,
+                isDisabled: action.isDisabled
+                    ? [...state.isDisabled, action.id]
+                    : state.isDisabled.filter(id => id !== action.id)
+            }
 
 
         default:
@@ -64,12 +75,44 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const follow = (userId) => ({type: FOLLOW, userId})
-export const unfollow = (userId) => ({type: UNFOLLOW, userId})
-export const setUsers = (users) => ({type: USERS, users})
+const follow = (userId) => ({type: FOLLOW, userId})
+const unfollow = (userId) => ({type: UNFOLLOW, userId})
+const setUsers = (users) => ({type: USERS, users})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
-export const setUsersCount = (totalUsersCount) => ({type: SET_USERS_COUNT, totalUsersCount})
-export const setPreloader = (isFetching) => ({type: SET_PRELOADER, isFetching})
+const setUsersCount = (totalUsersCount) => ({type: SET_USERS_COUNT, totalUsersCount})
+const setPreloader = (isFetching) => ({type: SET_PRELOADER, isFetching})
+const setDisableButton = (isDisabled, id) => ({type: SET_DISABLE, isDisabled, id})
+
+
+export const getUsers = (currentPage, pageSize) => (dispatch) => {
+    dispatch(setPreloader(true))
+    usersAPI.getUsers(currentPage, pageSize)
+        .then(data => {
+            dispatch(setPreloader(false))
+            dispatch(setUsers(data.items))
+            dispatch(setUsersCount(data.totalCount))
+        })
+}
+
+export const following = (userId) => (dispatch) => {
+    dispatch(setDisableButton(true, userId))
+    usersAPI.followUser(userId).then(data => {
+        if (data.resultCode === 0) {
+            dispatch(follow(userId))
+            dispatch(setDisableButton(false, userId))
+        }
+    })
+}
+
+export const unfollowing = (userId) => (dispatch) => {
+    dispatch(setDisableButton(true, userId))
+    usersAPI.unfollowUser(userId).then(data => {
+        if (data.resultCode === 0) {
+            dispatch(unfollow(userId))
+            dispatch(setDisableButton(false, userId))
+        }
+    })
+}
 
 
 export default usersReducer;

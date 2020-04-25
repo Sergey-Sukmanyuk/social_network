@@ -10,6 +10,7 @@ const Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
+    debugger
     return (
         <div className={style.wrapper}>
 
@@ -42,6 +43,7 @@ const Users = (props) => {
                 {pages.map(page => <span onClick={() => {
                     props.onPageChange(page)
                 }} className={props.currentPage === page && style.selectedPage}> {page} </span>)}
+
             </div>
         </div>
     )

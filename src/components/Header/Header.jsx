@@ -11,7 +11,7 @@ const Header = ({isAuth, login}) => {
             </div>
 
             <div className={style.loginBlock}>
-                {isAuth ? login :  <NavLink to = '{/login}'> Login </NavLink>}
+                {isAuth ? login :  <NavLink to = {'/login'}> Login </NavLink>}
             </div>
         </header>
     )

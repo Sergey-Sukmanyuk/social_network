@@ -4,6 +4,7 @@ import DialogsItem from "./DialogsItem/DialogsItem";
 import Messages from "./Messages/Messages";
 
 
+
 const Dialogs = (props) => {
 
     let sendMessage = () => {

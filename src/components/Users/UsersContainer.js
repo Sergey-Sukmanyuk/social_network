@@ -29,7 +29,8 @@ class UsersContainer extends Component {
                    unfollowing={this.props.unfollowing}
                    currentPage={this.props.currentPage}
                    onPageChange={this.onPageChange}
-                   isDisabled={this.props.isDisabled}/>
+                   isDisabled={this.props.isDisabled}
+                   setCurrentPage = {this.props.setCurrentPage}/>
 
         </>
     }

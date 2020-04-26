@@ -13,7 +13,7 @@ class Status extends Component {
         })
     }
 
-    disactivateEditMode = () => {
+    diactivateEditMode = () => {
         this.setState({
             editMode: false
         })
@@ -43,7 +43,7 @@ class Status extends Component {
                     </div>
 
                     : <div>
-                        <input onChange={this.changeStatus} autoFocus={true} onBlur={this.disactivateEditMode} value={this.state.status || '-----'}/>
+                        <input onChange={this.changeStatus} autoFocus={true} onBlur={this.diactivateEditMode} value={this.state.status || '-----'}/>
                     </div>
                 }
             </div>

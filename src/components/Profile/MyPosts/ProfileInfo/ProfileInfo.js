@@ -10,8 +10,9 @@ import youtube from "../../../../images/social/you.png";
 import mainLink from "../../../../images/social/linked.png";
 import React from "react";
 import Preloader from "../../../common/Preloader/Preloader";
+import Status from "../../../Status/Status";
 
-const ProfileInfo = ({profile}) => {
+const ProfileInfo = ({profile, status, setStatus}) => {
     if (!profile) {
         return <Preloader/>
     }
@@ -24,6 +25,7 @@ const ProfileInfo = ({profile}) => {
             </div>
             <div className={style.info}>
                 <h3>{profile.fullName}</h3>
+                <Status status = {status} setStatus = {setStatus}/>
                 <div className={style.info_item}>Date of birth: 1 January</div>
                 <div className={style.info_item}>City: New York</div>
                 <div className={style.info_item}>Education: none</div>

@@ -6,7 +6,7 @@ import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
-const Profile = ({profile}) => {
+const Profile = ({profile, status, setStatus}) => {
 
     return (
         <section className={style.content}>
@@ -14,7 +14,7 @@ const Profile = ({profile}) => {
                 <img src={wallpaper} alt=""/>
             </div>
 
-            <ProfileInfo profile = {profile}/>
+            <ProfileInfo profile = {profile} status = {status} setStatus = {setStatus} />
             <MyPostsContainer />
 
 

@@ -6,7 +6,7 @@ import like from'../../../../images/like_.png'
 const Post = (props) => {
     return(
             <div className={style.container}>
-                <div className={style.post__wrapper}>
+                <div className={style.postWrapper}>
                     <div className = {style.avatar}>
                         <img src={avaMale} alt="avatar"/>
                     </div>

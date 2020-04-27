@@ -23,7 +23,7 @@ class ProfileContainer extends Component {
 
         return (
             <div>
-                <Profile {...this.props} profile = {this.props.profile}
+                <Profile profile = {this.props.profile}
                          status = {this.props.status} setStatus = {this.props.setStatus}/>
             </div>
         )

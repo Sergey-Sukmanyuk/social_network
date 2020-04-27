@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom";
 const Header = ({isAuth, login}) => {
     return(
         <header className={style.header}>
-            <div className={style.logo__wrapper}>
+            <div className={style.logoWrapper}>
                 <a href="#"><img className={style.logo} src={logo} alt="Logo"/></a>
             </div>
 

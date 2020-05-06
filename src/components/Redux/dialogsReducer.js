@@ -14,8 +14,6 @@ let initialSate = {
             {id: '2', message: 'I\'m fine. What about you?'},
             {id: '3', message: 'I\'m fine too)'}
         ]
-
-
 }
 
 const dialogsReducer = (state = initialSate, action) => {
@@ -28,17 +26,13 @@ const dialogsReducer = (state = initialSate, action) => {
         return {
             ...state,
             messages: [message, ...state.messages],
-
         }
 
         default:
             return state
-
     }
 }
 
 export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText})
-
-
 
 export default dialogsReducer;
